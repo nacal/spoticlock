@@ -58,14 +58,19 @@ export default {
         },
         data: {},
       };
-      axios
-        .get(endpoint, data)
-        .then((res) => {
-          this.nowPlaying = res.data;
-        })
-        .catch((err) => {
-          console.error(err);
-        });
+      let self = this;
+      let fetchData = function () {
+        axios
+          .get(endpoint, data)
+          .then((res) => {
+            self.nowPlaying = res.data;
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      };
+      fetchData();
+      setInterval(fetchData, 1000);
     },
   },
 };
