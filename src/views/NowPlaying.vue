@@ -2,11 +2,20 @@
   <div class="nowplaying">
     <h1>NowPlaying</h1>
     <button @click="spotifyLogin">認証</button>
-    <p>{{ routeParams }}</p>
+    <br />
+    <button @click="getNowPlaying">再生中の曲情報取得</button>
+    <div v-if="nowPlaying != null">
+      <p>
+        今再生中の曲 : {{ nowPlaying.item.artists[0].name }} の
+        {{ nowPlaying.item.name }}
+      </p>
+      <img :src="nowPlaying.item.album.images[1].url" />
+    </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data: function () {
     return {
@@ -38,6 +47,25 @@ export default {
         redirect_uri +
         "&scope=" +
         scope;
+    },
+    getNowPlaying: function () {
+      let endpoint =
+        "https://api.spotify.com/v1/me/player/currently-playing?market=JP";
+      let data = {
+        headers: {
+          Authorization:
+            this.routeParams.token_type + " " + this.routeParams.access_token,
+        },
+        data: {},
+      };
+      axios
+        .get(endpoint, data)
+        .then((res) => {
+          this.nowPlaying = res.data;
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     },
   },
 };
