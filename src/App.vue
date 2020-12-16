@@ -15,7 +15,6 @@
 html {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  font-size: 62.5%;
 }
 
 body,

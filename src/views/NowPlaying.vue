@@ -94,15 +94,15 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 120px;
+  height: 160px;
 }
 
 .header {
   text-align: center;
 
   &__title {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
+    font-size: 2rem;
+    margin-bottom: 1rem;
     color: #1db954;
   }
 
@@ -122,8 +122,10 @@ export default {
     vertical-align: middle;
     text-decoration: none;
     overflow: hidden;
-
-    padding: 1.5rem 6rem;
+    padding: 0.5rem 2rem;
+    @media screen and (min-width: 440px) {
+      padding: 0.75rem 3rem;
+    }
 
     color: #fff;
     background: #000;
@@ -131,7 +133,11 @@ export default {
     width: 220px;
 
     & + & {
-      margin-left: 8px;
+      margin-top: 8px;
+      @media screen and (min-width: 440px) {
+        margin-left: 8px;
+        margin-top: 0;
+      }
     }
 
     &::before {
@@ -140,11 +146,14 @@ export default {
       left: 0;
 
       width: 150%;
-      height: 500%;
+      height: 600%;
 
       content: "";
       transition: all 0.5s ease-in-out;
-      transform: translateX(-80%) translateY(-25%) rotate(45deg);
+      transform: translateX(-70%) translateY(-25%) rotate(45deg);
+      @media screen and (min-width: 440px) {
+        transform: translateX(-80%) translateY(-25%) rotate(45deg);
+      }
 
       background: #1db954;
     }
@@ -156,14 +165,15 @@ export default {
 
   &__text {
     position: relative;
+    font-size: 0.75rem;
   }
 }
 
 .nowPlaying {
   &__img {
     max-width: 100vw;
-    max-height: calc(100vh - 174px);
-    height: calc(100vh - 174px);
+    max-height: calc(100vh - 214px);
+    height: calc(100vh - 214px);
     width: 100vw;
     object-fit: contain;
   }
@@ -172,6 +182,7 @@ export default {
     height: 48px;
     text-align: center;
     line-height: 48px;
+    color: #fff;
   }
 }
 </style>
