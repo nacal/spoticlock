@@ -1,16 +1,29 @@
 <template>
   <div class="nowplaying">
-    <h1>NowPlaying</h1>
-    <button @click="spotifyLogin">認証</button>
-    <br />
-    <button @click="getNowPlaying">再生中の曲情報取得</button>
-    <div v-if="nowPlaying != null">
-      <p>
-        今再生中の曲 : {{ nowPlaying.item.artists[0].name }} の
-        {{ nowPlaying.item.name }}
-      </p>
-      <img :src="nowPlaying.item.album.images[1].url" />
-    </div>
+    <header class="l-header">
+      <div class="header">
+        <h1 class="header__title">SpotyClock</h1>
+        <div class="header__button button">
+          <button @click="spotifyLogin" class="button__item">
+            <span class="button__text">Link Spotify</span>
+          </button>
+          <button @click="getNowPlaying" class="button__item">
+            <span class="button__text">Get NowPlaying</span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <div v-if="nowPlaying != null" class="nowPlaying">
+        <img
+          :src="nowPlaying.item.album.images[1].url"
+          class="nowPlaying__img"
+        />
+        <p class="nowPlaying__text">
+          {{ nowPlaying.item.artists[0].name }} - {{ nowPlaying.item.name }}
+        </p>
+      </div>
+    </main>
   </div>
 </template>
 
@@ -75,3 +88,90 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.l-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+}
+
+.header {
+  text-align: center;
+
+  &__title {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: #1db954;
+  }
+
+  &__button {
+    margin-bottom: 1rem;
+  }
+}
+
+.button {
+  &__item {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    overflow: hidden;
+
+    padding: 1.5rem 6rem;
+
+    color: #fff;
+    background: #000;
+    position: relative;
+    width: 220px;
+
+    & + & {
+      margin-left: 8px;
+    }
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 150%;
+      height: 500%;
+
+      content: "";
+      transition: all 0.5s ease-in-out;
+      transform: translateX(-80%) translateY(-25%) rotate(45deg);
+
+      background: #1db954;
+    }
+
+    &:hover::before {
+      transform: translateX(-9%) translateY(-25%) rotate(45deg);
+    }
+  }
+
+  &__text {
+    position: relative;
+  }
+}
+
+.nowPlaying {
+  &__img {
+    max-width: 100vw;
+    max-height: calc(100vh - 174px);
+    height: calc(100vh - 174px);
+    width: 100vw;
+    object-fit: contain;
+  }
+
+  &__text {
+    height: 48px;
+    text-align: center;
+    line-height: 48px;
+  }
+}
+</style>
