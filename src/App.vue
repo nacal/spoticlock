@@ -4,6 +4,9 @@
   </div>
 </template>
 
+<script>
+export default {};
+</script>
 <style lang="scss">
 *,
 *:before,
@@ -24,6 +27,7 @@ p {
 }
 
 body {
-  background-color: #222;
+  background: linear-gradient(#222, 90%, #1db954);
+  min-height: 100vh;
 }
 </style>
