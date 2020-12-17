@@ -2,7 +2,10 @@
   <div class="nowplaying">
     <header class="l-header">
       <div class="header">
-        <h1 class="header__title">SpotiClock</h1>
+        <h1 class="header__title">
+          <span class="-main">SpotiClock</span>
+          <span class="-sub" lang="en">Spotify NowPlayng Clock</span>
+        </h1>
         <div class="header__button button">
           <Button buttonName="Link Spotify" @click.native="spotifyLogin" />
           <Button buttonName="Get NowPlaying" @click.native="getNowPlaying" />
@@ -95,19 +98,31 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 160px;
+  height: 200px;
 }
 
 .header {
   text-align: center;
 
   &__title {
-    font-size: 3rem;
     margin-bottom: 1rem;
-    color: #1db954;
     font-family: fieldwork, sans-serif;
-    font-weight: 500;
     font-style: normal;
+    display: flex;
+    flex-direction: column;
+
+    .-main {
+      font-size: 3rem;
+      font-weight: 500;
+      color: #1db954;
+      line-height: 1.2em;
+    }
+
+    .-sub {
+      font-size: 1rem;
+      font-weight: 300;
+      color: #fff;
+    }
   }
 
   &__button {
