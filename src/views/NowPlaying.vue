@@ -105,8 +105,8 @@ export default {
     font-size: 3rem;
     margin-bottom: 1rem;
     color: #1db954;
-    font-family: tablet-gothic, sans-serif;
-    font-weight: 700;
+    font-family: fieldwork, sans-serif;
+    font-weight: 500;
     font-style: normal;
   }
 
