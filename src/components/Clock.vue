@@ -59,7 +59,6 @@ export default {
 
   &__date {
     font-size: 2rem;
-    line-height: 1em;
 
     @media screen and (min-width: 440px) {
       font-size: 2.5rem;
@@ -68,7 +67,6 @@ export default {
 
   &__time {
     font-size: 4rem;
-    line-height: 1em;
 
     @media screen and (min-width: 440px) {
       font-size: 5rem;
