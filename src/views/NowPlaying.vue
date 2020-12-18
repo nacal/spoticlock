@@ -14,16 +14,22 @@
     </header>
     <main class="main">
       <div v-if="nowPlaying != null" class="nowPlaying">
-        <img
-          :src="nowPlaying.item.album.images[1].url"
-          class="nowPlaying__img"
-        />
+        <div class="nowPlaying__main">
+          <img
+            :src="nowPlaying.item.album.images[1].url"
+            class="nowPlaying__img"
+          />
+          <Clock />
+        </div>
         <p class="nowPlaying__text">
           {{ nowPlaying.item.artists[0].name }} - {{ nowPlaying.item.name }}
         </p>
       </div>
       <div v-else class="nowPlaying">
-        <img src="../assets/nowPlaying_null.jpg" class="nowPlaying__img" />
+        <div class="nowPlaying__main">
+          <img src="../assets/nowPlaying_null.png" class="nowPlaying__img" />
+          <Clock />
+        </div>
         <p class="nowPlaying__text">artist - title</p>
       </div>
     </main>
@@ -33,10 +39,12 @@
 <script>
 import axios from "axios";
 import Button from "../components/Button.vue";
+import Clock from "../components/Clock.vue";
 
 export default {
   components: {
     Button,
+    Clock,
   },
   data: function () {
     return {
@@ -144,9 +152,17 @@ export default {
   justify-content: center;
   align-items: center;
 
-  &__img {
-    max-height: calc(100% - 48px);
+  &__main {
+    height: calc(100% - 48px);
     width: 100vw;
+    object-fit: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__img {
+    height: 100%;
     object-fit: contain;
   }
 
