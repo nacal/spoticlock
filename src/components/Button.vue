@@ -34,7 +34,7 @@ export default {
     }
 
     color: #fff;
-    background: #000;
+    background: #333;
     position: relative;
     width: 220px;
 
