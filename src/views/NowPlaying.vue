@@ -22,6 +22,10 @@
           {{ nowPlaying.item.artists[0].name }} - {{ nowPlaying.item.name }}
         </p>
       </div>
+      <div v-else class="nowPlaying">
+        <img src="../assets/nowPlaying_null.jpg" class="nowPlaying__img" />
+        <p class="nowPlaying__text">artist - title</p>
+      </div>
     </main>
   </div>
 </template>
@@ -131,10 +135,17 @@ export default {
 }
 
 .nowPlaying {
+  max-width: 100vw;
+  max-height: calc(100vh - 200px);
+  height: calc(100vh - 200px);
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   &__img {
-    max-width: 100vw;
-    max-height: calc(100vh - 214px);
-    height: calc(100vh - 214px);
+    max-height: calc(100% - 48px);
     width: 100vw;
     object-fit: contain;
   }
