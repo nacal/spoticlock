@@ -52,10 +52,10 @@ export default {
 <style lang="scss">
 .clock {
   position: absolute;
-  text-align: center;
-  font-weight: 700;
-  text-shadow: 0 3px 3px #ddd, 0 -3px 3px #ddd, 3px 0 3px #ddd, -3px 0 3px #ddd;
   font-family: bc-sklonar, sans-serif;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 0 3px 3px #ddd, 0 -3px 3px #ddd, 3px 0 3px #ddd, -3px 0 3px #ddd;
 
   &__date {
     font-size: 2rem;
@@ -79,6 +79,7 @@ export default {
         font-size: 4rem;
       }
     }
+
     .clock__time {
       @media screen and (min-width: 440px) {
         font-size: 8rem;

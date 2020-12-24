@@ -123,6 +123,7 @@ export default {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -139,17 +140,17 @@ export default {
   text-align: center;
 
   &__title {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 1rem;
     font-family: fieldwork, sans-serif;
     font-style: normal;
-    display: flex;
-    flex-direction: column;
 
     .-main {
       font-size: 3rem;
       font-weight: 500;
-      color: #1db954;
       line-height: 1.2em;
+      color: #1db954;
     }
 
     .-sub {
@@ -165,69 +166,69 @@ export default {
 }
 
 .nowPlaying {
-  max-width: 100vw;
-  max-height: calc(100vh - 200px);
-  height: calc(100vh - 200px);
-  width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  width: 100vw;
+  max-width: 100vw;
+  height: calc(100vh - 200px);
+  max-height: calc(100vh - 200px);
 
   &__main {
-    height: calc(100% - 48px);
-    width: 100vw;
-    object-fit: contain;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: calc(100% - 48px);
+    object-fit: contain;
 
     &.fullScreen {
-      height: 100vh;
       position: fixed;
       top: 0;
+      height: 100vh;
     }
   }
 
   &__artwork {
-    height: 100%;
     position: relative;
+    height: 100%;
+
+    .button__full {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      display: none;
+      width: 32px;
+      height: 32px;
+      margin: 0 8px 8px 0;
+      cursor: pointer;
+      border-radius: 25%;
+      outline: none;
+    }
 
     &:hover {
       .button__full {
         @media screen and (orientation: landscape) {
           display: block;
-          animation: show 0.25s linear 0s;
+          animation: show .25s linear 0s;
         }
       }
     }
   }
 
   &__img {
-    height: 100%;
     max-width: 100%;
+    height: 100%;
     object-fit: contain;
   }
 
   &__text {
     height: 48px;
-    text-align: center;
     line-height: 48px;
     color: #fff;
+    text-align: center;
   }
-}
-
-.button__full {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  margin: 0 8px 8px 0;
-  height: 32px;
-  width: 32px;
-  border-radius: 25%;
-  outline: none;
-  display: none;
-  cursor: pointer;
 }
 </style>

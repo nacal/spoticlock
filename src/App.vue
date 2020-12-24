@@ -10,8 +10,8 @@ export default {};
 
 <style lang="scss">
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   -webkit-box-sizing: inherit;
   box-sizing: inherit;
 }
@@ -28,7 +28,7 @@ p {
 }
 
 body {
-  background: linear-gradient(#222, 90%, #1db954);
   min-height: 100vh;
+  background: linear-gradient(#222, 90%, #1db954);
 }
 </style>
