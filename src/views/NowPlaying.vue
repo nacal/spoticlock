@@ -14,21 +14,27 @@
     </header>
     <main class="main">
       <div v-if="nowPlaying != null" class="nowPlaying">
-        <div class="nowPlaying__main">
-          <img
-            :src="nowPlaying.item.album.images[1].url"
-            class="nowPlaying__img"
-          />
-          <Clock />
+        <div class="nowPlaying__main" :class="{ fullScreen: isFullScreen }">
+          <div class="nowPlaying__artwork">
+            <img
+              :src="nowPlaying.item.album.images[1].url"
+              class="nowPlaying__img"
+            />
+            <button class="button__full" @click="fullScreen" />
+          </div>
+          <Clock :class="{ fullScreen: isFullScreen }" />
         </div>
         <p class="nowPlaying__text">
           {{ nowPlaying.item.artists[0].name }} - {{ nowPlaying.item.name }}
         </p>
       </div>
       <div v-else class="nowPlaying">
-        <div class="nowPlaying__main">
-          <img src="../assets/nowPlaying_null.png" class="nowPlaying__img" />
-          <Clock />
+        <div class="nowPlaying__main" :class="{ fullScreen: isFullScreen }">
+          <div class="nowPlaying__artwork">
+            <img src="../assets/nowPlaying_null.png" class="nowPlaying__img" />
+            <button class="button__full" @click="fullScreen" />
+          </div>
+          <Clock :class="{ fullScreen: isFullScreen }" />
         </div>
         <p class="nowPlaying__text">artist - title</p>
       </div>
@@ -49,6 +55,7 @@ export default {
   data: function () {
     return {
       nowPlaying: null,
+      isFullScreen: false,
     };
   },
   props: {
@@ -101,11 +108,26 @@ export default {
       fetchData();
       setInterval(fetchData, 1000);
     },
+    fullScreen: function () {
+      this.isFullScreen == true
+        ? (this.isFullScreen = false)
+        : (this.isFullScreen = true);
+      console.log(this.isFullScreen);
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .l-header {
   display: flex;
   align-items: center;
@@ -159,10 +181,32 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+
+    &.fullScreen {
+      height: 100vh;
+      position: fixed;
+      top: 0;
+    }
+  }
+
+  &__artwork {
+    height: 100%;
+    position: relative;
+
+    &:hover {
+      .button__full {
+        @media screen and (orientation: landscape) {
+          display: block;
+          animation: show 0.25s linear 0s;
+        }
+      }
+    }
   }
 
   &__img {
     height: 100%;
+    max-width: 100%;
     object-fit: contain;
   }
 
@@ -172,5 +216,18 @@ export default {
     line-height: 48px;
     color: #fff;
   }
+}
+
+.button__full {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0 8px 8px 0;
+  height: 32px;
+  width: 32px;
+  border-radius: 25%;
+  outline: none;
+  display: none;
+  cursor: pointer;
 }
 </style>

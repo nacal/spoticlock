@@ -72,5 +72,18 @@ export default {
       font-size: 5rem;
     }
   }
+
+  &.fullScreen {
+    .clock__date {
+      @media screen and (min-width: 440px) {
+        font-size: 4rem;
+      }
+    }
+    .clock__time {
+      @media screen and (min-width: 440px) {
+        font-size: 8rem;
+      }
+    }
+  }
 }
 </style>
