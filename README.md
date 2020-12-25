@@ -1,4 +1,5 @@
 # spoticlock
+DEMO https://nkthkr.github.io/spoticlock/
 
 ## Project setup
 ```
