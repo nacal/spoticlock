@@ -100,7 +100,7 @@ export default {
       let endpoint = "https://accounts.spotify.com/authorize";
       let response_type = "token";
       let client_id = "b64cf338c3774fb3a03c1e91100c8dac";
-      let redirect_uri = "http://localhost:8080";
+      let redirect_uri = "https://spoticlock.netlify.app/";
       let scope = "user-read-currently-playing";
       location.href =
         endpoint +
