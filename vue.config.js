@@ -1,5 +1,5 @@
 module.exports = {
   publicPath: "/spoticlock/",
-  outputDir: "docs",
+  outputDir: "dist",
   assetsDir: "",
 };
