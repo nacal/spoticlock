@@ -12,7 +12,7 @@ export default {
     return {
       date: "",
       time: "",
-      week: ["Sun", "Mon", "Tue", "Wed", "The", "Fri", "Sat"],
+      week: ["Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat."],
     };
   },
   mounted: function () {
