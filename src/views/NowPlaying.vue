@@ -6,7 +6,7 @@
           <span class="-main">SpotiClock</span>
           <span class="-sub" lang="en">Spotify NowPlayng Clock</span>
         </h1>
-        <div class="header__button button">
+        <div class="header__button">
           <Button buttonName="Link Spotify" @click.native="spotifyLogin" />
           <Button buttonName="Get NowPlaying" @click.native="getNowPlaying" />
         </div>
@@ -20,7 +20,14 @@
               :src="nowPlaying.item.album.images[1].url"
               class="nowPlaying__img"
             />
-            <button class="button__full" @click="fullScreen" />
+            <div class="fullScreen">
+              <button class="fullScreen__button" @click="fullScreen">
+              <font-awesome-icon
+                class="fullScreen__icon"
+                :icon="['fas', 'expand-arrows-alt']"
+              />
+              </button>
+            </div>
           </div>
           <Clock :class="{ fullScreen: isFullScreen }" />
         </div>
@@ -32,7 +39,14 @@
         <div class="nowPlaying__main" :class="{ fullScreen: isFullScreen }">
           <div class="nowPlaying__artwork">
             <img src="../assets/nowPlaying_null.png" class="nowPlaying__img" />
-            <button class="button__full" @click="fullScreen" />
+            <div class="fullScreen">
+              <button class="fullScreen__button" @click="fullScreen">
+              <font-awesome-icon
+                class="fullScreen__icon"
+                :icon="['fas', 'expand-arrows-alt']"
+              />
+              </button>
+            </div>
           </div>
           <Clock :class="{ fullScreen: isFullScreen }" />
         </div>
@@ -43,9 +57,19 @@
 </template>
 
 <script>
+import Vue from "vue";
+import VueRouter from "vue-router";
 import axios from "axios";
 import Button from "../components/Button.vue";
 import Clock from "../components/Clock.vue";
+
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faExpandArrowsAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
+Vue.use(VueRouter);
+library.add(faExpandArrowsAlt);
+Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 export default {
   components: {
@@ -195,21 +219,37 @@ export default {
     position: relative;
     height: 100%;
 
-    .button__full {
+    .fullScreen {
       position: absolute;
       right: 0;
       bottom: 0;
       display: none;
-      width: 32px;
-      height: 32px;
       margin: 0 8px 8px 0;
-      cursor: pointer;
-      border-radius: 25%;
-      outline: none;
+
+      &__button {
+        position: relative;
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+        border-radius: 25%;
+        outline: none;
+      }
+
+      &__icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 24px;
+        height: 24px;
+        margin: 2px;
+        color: #333;
+      }
     }
 
     &:hover {
-      .button__full {
+      .fullScreen {
         @media screen and (orientation: landscape) {
           display: block;
           animation: show .25s linear 0s;
