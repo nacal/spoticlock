@@ -22,10 +22,10 @@
             />
             <div class="fullScreen">
               <button class="fullScreen__button" @click="fullScreen">
-              <font-awesome-icon
-                class="fullScreen__icon"
-                :icon="['fas', 'expand-arrows-alt']"
-              />
+                <font-awesome-icon
+                  class="fullScreen__icon"
+                  :icon="['fas', 'expand-arrows-alt']"
+                />
               </button>
             </div>
           </div>
@@ -41,10 +41,10 @@
             <img src="../assets/nowPlaying_null.png" class="nowPlaying__img" />
             <div class="fullScreen">
               <button class="fullScreen__button" @click="fullScreen">
-              <font-awesome-icon
-                class="fullScreen__icon"
-                :icon="['fas', 'expand-arrows-alt']"
-              />
+                <font-awesome-icon
+                  class="fullScreen__icon"
+                  :icon="['fas', 'expand-arrows-alt']"
+                />
               </button>
             </div>
           </div>
@@ -53,6 +53,11 @@
         <p class="nowPlaying__text">artist - title</p>
       </div>
     </main>
+    <footer class="footer">
+      <article class="copyright">
+        <small lang="en">&copy; 2020 Hikaru Nakata.</small>
+      </article>
+    </footer>
   </div>
 </template>
 
@@ -196,8 +201,8 @@ export default {
   justify-content: center;
   width: 100vw;
   max-width: 100vw;
-  height: calc(100vh - 200px);
-  max-height: calc(100vh - 200px);
+  height: calc(100vh - 232px);
+  max-height: calc(100vh - 232px);
 
   &__main {
     position: relative;
@@ -270,5 +275,16 @@ export default {
     color: #fff;
     text-align: center;
   }
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  height: 32px;
+}
+
+.copyright {
+  line-height: 32px;
+  color: #222;
 }
 </style>
