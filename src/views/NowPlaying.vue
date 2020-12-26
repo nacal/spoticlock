@@ -1,17 +1,6 @@
 <template>
   <div class="nowplaying">
-    <header class="l-header">
-      <div class="header">
-        <h1 class="header__title">
-          <span class="-main">SpotiClock</span>
-          <span class="-sub" lang="en">Spotify NowPlayng Clock</span>
-        </h1>
-        <div class="header__button">
-          <Button buttonName="Link Spotify" @click.native="spotifyLogin" />
-          <Button buttonName="Get NowPlaying" @click.native="getNowPlaying" />
-        </div>
-      </div>
-    </header>
+    <Header />
     <main class="main">
       <div v-if="nowPlaying != null" class="nowPlaying">
         <div class="nowPlaying__main" :class="{ fullScreen: isFullScreen }">
@@ -53,11 +42,7 @@
         <p class="nowPlaying__text">artist - title</p>
       </div>
     </main>
-    <footer class="footer">
-      <article class="copyright">
-        <small lang="en">&copy; 2020 Hikaru Nakata.</small>
-      </article>
-    </footer>
+    <Footer />
   </div>
 </template>
 
@@ -65,8 +50,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import axios from "axios";
-import Button from "../components/Button.vue";
 import Clock from "../components/Clock.vue";
+import Header from "../components/Header.vue";
+import Footer from "../components/Footer.vue";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faExpandArrowsAlt } from "@fortawesome/free-solid-svg-icons";
@@ -78,7 +64,8 @@ Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 export default {
   components: {
-    Button,
+    Header,
+    Footer,
     Clock,
   },
   data: function () {
@@ -155,42 +142,6 @@ export default {
 
   to {
     opacity: 1;
-  }
-}
-
-.l-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 200px;
-}
-
-.header {
-  text-align: center;
-
-  &__title {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1rem;
-    font-family: fieldwork, sans-serif;
-    font-style: normal;
-
-    .-main {
-      font-size: 3rem;
-      font-weight: 500;
-      line-height: 1.2em;
-      color: #1db954;
-    }
-
-    .-sub {
-      font-size: 1rem;
-      font-weight: 300;
-      color: #fff;
-    }
-  }
-
-  &__button {
-    margin-bottom: 1rem;
   }
 }
 
@@ -275,16 +226,5 @@ export default {
     color: #fff;
     text-align: center;
   }
-}
-
-.footer {
-  display: flex;
-  justify-content: center;
-  height: 32px;
-}
-
-.copyright {
-  line-height: 32px;
-  color: #222;
 }
 </style>
