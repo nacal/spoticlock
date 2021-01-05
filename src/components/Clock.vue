@@ -55,10 +55,11 @@ export default {
   font-family: bc-sklonar, sans-serif;
   font-weight: 700;
   text-align: center;
-  text-shadow: 0 3px 3px #ddd, 0 -3px 3px #ddd, 3px 0 3px #ddd, -3px 0 3px #ddd;
+  -webkit-text-stroke-color: white;
 
   &__date {
     font-size: 2rem;
+    -webkit-text-stroke-width: 2px;
 
     @media screen and (min-width: 440px) {
       font-size: 2.5rem;
@@ -67,6 +68,7 @@ export default {
 
   &__time {
     font-size: 4rem;
+    -webkit-text-stroke-width: 4px;
 
     @media screen and (min-width: 440px) {
       font-size: 5rem;
