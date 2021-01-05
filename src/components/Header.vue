@@ -15,10 +15,60 @@
 
 <script>
 import Button from "../components/Button.vue";
+import axios from "axios";
 
 export default {
   components: {
     Button,
+  },
+  methods: {
+    spotifyLogin: function () {
+      let endpoint = "https://accounts.spotify.com/authorize";
+      let response_type = "token";
+      let client_id = "b64cf338c3774fb3a03c1e91100c8dac";
+      let redirect_uri = "http://localhost:8080";
+      let scope = "user-read-currently-playing";
+      location.href =
+        endpoint +
+        "?response_type=" +
+        response_type +
+        "&client_id=" +
+        client_id +
+        "&redirect_uri=" +
+        redirect_uri +
+        "&scope=" +
+        scope;
+    },
+    getNowPlaying: function () {
+      let endpoint =
+        "https://api.spotify.com/v1/me/player/currently-playing?market=JP";
+      let data = {
+        headers: {
+          Authorization:
+            this.routeParams.token_type + " " + this.routeParams.access_token,
+        },
+        data: {},
+      };
+      let self = this;
+      let fetchData = function () {
+        axios
+          .get(endpoint, data)
+          .then((res) => {
+            self.nowPlaying = res.data;
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      };
+      fetchData();
+      setInterval(fetchData, 1000);
+    },
+    fullScreen: function () {
+      this.isFullScreen == true
+        ? (this.isFullScreen = false)
+        : (this.isFullScreen = true);
+      console.log(this.isFullScreen);
+    },
   },
 };
 </script>

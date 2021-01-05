@@ -1,6 +1,17 @@
 <template>
   <div class="nowplaying">
-    <Header />
+      <header class="l-header">
+    <div class="header">
+      <h1 class="header__title">
+        <span class="-main">SpotiClock</span>
+        <span class="-sub" lang="en">Spotify NowPlayng Clock</span>
+      </h1>
+      <div class="header__button">
+        <Button buttonName="Link Spotify" @click.native="spotifyLogin" />
+        <Button buttonName="Get NowPlaying" @click.native="getNowPlaying" />
+      </div>
+    </div>
+  </header>
     <main class="main">
       <div v-if="nowPlaying != null" class="nowPlaying">
         <div class="nowPlaying__main" :class="{ fullScreen: isFullScreen }">
@@ -51,8 +62,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import axios from "axios";
 import Clock from "../components/Clock.vue";
-import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
+import Button from "../components/Button.vue";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faExpandArrowsAlt } from "@fortawesome/free-solid-svg-icons";
@@ -64,9 +75,9 @@ Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 export default {
   components: {
-    Header,
     Footer,
     Clock,
+    Button
   },
   data: function () {
     return {
@@ -87,7 +98,7 @@ export default {
       let endpoint = "https://accounts.spotify.com/authorize";
       let response_type = "token";
       let client_id = "b64cf338c3774fb3a03c1e91100c8dac";
-      let redirect_uri = "https://spoticlock.netlify.app/";
+      let redirect_uri = "https://spoticlock.netlify.app";
       let scope = "user-read-currently-playing";
       location.href =
         endpoint +
@@ -142,6 +153,42 @@ export default {
 
   to {
     opacity: 1;
+  }
+}
+
+.l-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+}
+
+.header {
+  text-align: center;
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    font-family: fieldwork, sans-serif;
+    font-style: normal;
+
+    .-main {
+      font-size: 3rem;
+      font-weight: 500;
+      line-height: 1.2em;
+      color: #1db954;
+    }
+
+    .-sub {
+      font-size: 1rem;
+      font-weight: 300;
+      color: #fff;
+    }
+  }
+
+  &__button {
+    margin-bottom: 1rem;
   }
 }
 
