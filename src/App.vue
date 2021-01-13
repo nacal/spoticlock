@@ -30,5 +30,6 @@ p {
 body {
   min-height: 100vh;
   background: linear-gradient(#222, 90%, #1db954);
+  background-color: #222;
 }
 </style>
