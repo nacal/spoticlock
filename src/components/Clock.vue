@@ -77,13 +77,13 @@ export default {
 
   &.fullScreen {
     .clock__date {
-      @media screen and (min-width: 440px) {
+      @media screen and (min-width: 1024px) {
         font-size: 4rem;
       }
     }
 
     .clock__time {
-      @media screen and (min-width: 440px) {
+      @media screen and (min-width: 1024px) {
         font-size: 8rem;
       }
     }

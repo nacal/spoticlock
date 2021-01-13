@@ -200,7 +200,10 @@ export default {
   width: 100vw;
   max-width: 100vw;
   height: calc(100vh - 232px);
-  max-height: calc(100vh - 232px);
+
+  @media screen and (max-width: 1024px) {
+    min-height: 500px;
+  }
 
   &__main {
     position: relative;
